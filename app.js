@@ -61,8 +61,25 @@ app.post('/fetch-favicon', async (req, res) => {
 });
 
 app.get('/fetch-favicon', (req, res) => {
-  // Redirect user to /
-  res.redirect('/');
+  // check if ?url is in query
+  if (!req.query.url) {
+    return res.redirect('/');
+  }
+  
+  // Update request to post /fetch-favicon
+  req.method = 'POST';
+  req.body = { url: req.query.url };
+  req.headers['content-type'] = 'application/x-www-form-urlencoded';
+  req.url = '/fetch-favicon';
+  req.originalUrl = '/fetch-favicon';
+  req.query = { url: req.query.url };
+  req.app.handle(req, res, (err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
 });
 
 app.listen(3000, () => console.log('Favicon tool running at http://localhost:3000'));
