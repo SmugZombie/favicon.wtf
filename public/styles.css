@@ -1,0 +1,32 @@
+body {
+  font-family: sans-serif;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+.container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 90%;
+}
+input {
+  width: 300px;
+  padding: 10px;
+  margin-right: 10px;
+}
+button {
+  padding: 10px 15px;
+}
+img {
+  margin-top: 20px;
+  width: 64px;
+  height: 64px;
+}
+.error {
+  color: red;
+  margin-top: 20px;
+}

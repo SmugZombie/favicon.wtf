@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Favicon Finder</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 Favicon Finder</h1>
+    <form action="/fetch-favicon" method="POST">
+      <input type="text" name="url" placeholder="Enter URL" required>
+      <button type="submit">Find Favicon</button>
+    </form>
+
+    <% if (favicon) { %>
+      <div class="result">
+        <p>Favicon found:</p>
+        <img src="<%= favicon %>" alt="Favicon"> <br /><br />
+        <a href="<%= favicon %>" download>Download Favicon</a> <br /><br />
+        <input type="text" style='text-align: center;' value="<%= favicon %>" readonly>
+      </div>
+    <% } %>
+
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+  </div>
+</body>
+</html>
